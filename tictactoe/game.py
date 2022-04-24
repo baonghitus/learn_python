@@ -1,3 +1,4 @@
+import time
 from player import HumanPlayer, RandomComputerPlayer, GeniusComputerPlayer
 
 class TicTacToe:
@@ -106,11 +107,38 @@ def play(game, x_player, o_player, print_game=True):
             # else:
             #     letter = 'X'
 
-        if print_game:
-            print('It\'s a tie!')
+        # tiny break to make things a little easier to read
+        # if print_game:
+            # time.sleep(0.8)
+
+    if print_game:
+        print('It\'s a tie!')
 
 if __name__ == '__main__':
-    x_player = HumanPlayer('X')
-    o_player = GeniusComputerPlayer('O')
-    t = TicTacToe()
-    play(t, x_player, o_player, print_game=True)
+    x_wins = 0
+    o_wins = 0
+    ties = 0
+    iterations = input('Input iterations:')
+    try:
+        iterations = int(iterations)
+    except ValueError:
+        iterations = 1000;
+
+    for match in range(iterations):
+        print(f'mactch {match} start ')
+        x_player = RandomComputerPlayer('X')
+        o_player = GeniusComputerPlayer('O')
+        t = TicTacToe()
+        result = play(t, x_player, o_player, print_game=True)
+        if result == 'X':
+            x_wins += 1
+            print('==========> X win')
+        elif result == 'O':
+            o_wins += 1
+            print('==========> O win')
+        else:
+            ties += 1
+            print('==========> tie')
+            
+    
+    print(f'After {iterations} iterations, we see {x_wins} X wins, {o_wins} O wins, ang {ties} ties')
