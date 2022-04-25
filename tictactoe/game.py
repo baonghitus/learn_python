@@ -13,8 +13,8 @@ class TicTacToe:
 
     @staticmethod
     def print_board_nums():
-        # 0 | 1 | 2 etc (tells us what number correspond to what box)
-        number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
+        # 1 | 2 | 3 etc (tells us what number correspond to what box)
+        number_board = [[str(i + 1) for i in range(j*3, (j+1)*3)] for j in range(3)]
         for row in number_board:
             print('| ' + ' | '.join(row) + ' |')
 
@@ -122,11 +122,11 @@ if __name__ == '__main__':
     try:
         iterations = int(iterations)
     except ValueError:
-        iterations = 1000;
+        iterations = 1000
 
     for match in range(iterations):
         print(f'mactch {match} start ')
-        x_player = RandomComputerPlayer('X')
+        x_player = HumanPlayer('X')
         o_player = GeniusComputerPlayer('O')
         t = TicTacToe()
         result = play(t, x_player, o_player, print_game=True)
