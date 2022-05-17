@@ -12,7 +12,7 @@ ApplicationWindow {
     // flags: Qt.FramelessWindowHint | Qt.Window
 
     property string currTime: "00:00:00"
-    property QtObject backend
+    property QtObject timeview
 
     Rectangle {
         anchors.fill: parent
@@ -43,7 +43,7 @@ ApplicationWindow {
     }
 
     Connections {
-        target: backend
+        target: timeview
 
         function onUpdated(msg) {
             currTime = msg;
