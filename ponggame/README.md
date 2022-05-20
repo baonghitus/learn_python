@@ -1,7 +1,7 @@
-##GUI
+## GUI
 https://kivy.org/doc/stable/gettingstarted/installation.html
 
-Create virtual environment¶
+Create virtual environment
 >python -m virtualenv kvenv
 
 activate kvenv
