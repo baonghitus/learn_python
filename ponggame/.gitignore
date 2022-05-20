@@ -1,0 +1,8 @@
+/__pycache__
+/packenv
+/kvenv
+/dist
+/build
+/kvenv
+/orderfile
+.DS_Store
