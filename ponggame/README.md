@@ -13,3 +13,8 @@ If you are in a bash terminal on Windows, instead do:
 
 If you are in linux or macOS, instead do:
 >source kvenv/bin/activate
+
+To install from the terminal do:
+>python -m pip install "kivy[base]"
+>python -m pip install "kivy[dev]"
+>python -m pip install "kivy[full]"
