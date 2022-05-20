@@ -2,3 +2,6 @@
 /packenv
 /dist
 /build
+/kvenv
+/orderfile
+/.vscode
