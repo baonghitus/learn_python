@@ -3,34 +3,32 @@ from kivy.clock import Clock
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty, StringProperty
 from kivy.core.window import Window
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 from kivy.uix.label import Label
 
 class ClockTime():
     pass
 class MainBoard(Widget):
-    now = StringProperty('')
+    now = ObjectProperty()
+    clocklabel = StringProperty()
 
     def build(self):
         self.now = datetime.now()
-
         # Schedule the self.update_clock function to be called once a second
-        Clock.schedule_interval(self.update_clock, 1)
-        self.my_label = Label(text= self.now.strftime('%H:%M:%S'))
-        return self.my_label  # The label is the only widget in the interface
+        Clock.schedule_interval(self.update_clock, 1.0)
 
-    def update_clock(self, *args):
+    def update_clock(self, dt):
         # Called once a second using the kivy.clock module
         # Add one second to the current time and display it on the label
         self.now = self.now + timedelta(seconds = 1)
-        self.my_label.text = self.now.strftime('%H:%M:%S')
+        self.clocklabel = self.now.strftime('%H:%M:%S')
 
 
 class PrinterApp(App):
     def build(self):
-        Window.size = (400, 600)
+        Window.size = (800, 600)
         board = MainBoard()
+        board.build()
         return board
 
 PrinterApp().run()
