@@ -1,0 +1,108 @@
+<Board>
+    size: 150, 150
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<GameBoard>
+    mxboard: mxboard
+    canvas:
+        Rectangle:
+            source: 'image/bg.jpeg'
+            size: self.size
+
+    Board:
+        id: mxboard
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+
+        Button:
+            id: btn1
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x, self.parent.y + 100
+            text: ''
+            on_press: root.mxboard.presser(btn1, 1)
+
+        Button:
+            id: btn2
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x + 50, self.parent.y + 100
+            text:''
+            on_press: root.mxboard.presser(btn2, 2)
+        Button:
+            id: btn3
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x + 100, self.parent.y + 100
+            text:''
+            on_press: root.mxboard.presser(btn3, 3)
+        Button:
+            id: btn4
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x, self.parent.y + 50
+            text:''
+            on_press: root.mxboard.presser(btn4, 4)
+        Button:
+            id: btn5
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x + 50, self.parent.y + 50
+            text:''
+            on_press: root.mxboard.presser(btn5, 5)
+        Button:
+            id: btn6
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x + 100, self.parent.y + 50
+            text:''
+            on_press: root.mxboard.presser(btn6, 6)
+        Button:
+            id: btn7
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x, self.parent.y
+            text:''
+            on_press: root.mxboard.presser(btn7, 7)
+        Button:
+            id: btn8
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x + 50, self.parent.y
+            text:''
+            on_press: root.mxboard.presser(btn8, 8)
+        Button:
+            id: btn9
+            size: 50, 50
+            font_size: "30sp"
+            pos: self.parent.x + 100, self.parent.y
+            text:''
+            on_press: root.mxboard.presser(btn9, 9)
+
+    Button:
+        id: reset
+        size: 100, 30
+        font_size: "15sp"
+        center: self.parent.center_x , self.parent.height - (self.height / 2) - 10
+        text:'reset game!'
+        on_press: root.reset()
+
+    Label:
+        size: 100, 30
+        font_size: "15sp"
+        center: self.parent.center_x , self.parent.height - (self.height / 2) - 45
+        text: str(root.messresult)
+
+    Label:
+        id: clocklabel
+        font_size: 40
+        size: 240 , 60
+        # pos: 0, 5
+        center: self.parent.center_x , (self.height / 2) + 5
+        outline_color: [255, 255, 255, 1]
+        outline_width: 1
+        text: str(root.clocklabel)
+

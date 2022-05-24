@@ -72,73 +72,73 @@ class TicTacToe:
         #if all of these fail
         return False
 
-def play(game, x_player, o_player, print_game=True):
-    # return the winner of the game! or None for a tie
-    if print_game:
-        game.print_board_nums()
+# def play(game, x_player, o_player, print_game=True):
+#     # return the winner of the game! or None for a tie
+#     if print_game:
+#         game.print_board_nums()
 
-    letter = 'X' # starting letter
-    # interate while the game still has empty squares
-    # (we don't have to worry about winner because we'll just return that)
-    # which breaks the loop
-    while game.empty_squares():
-        # get the move from the appropriate player
-        if letter == 'O':
-            square = o_player.get_move(game)
-        else:
-            square = x_player.get_move(game)
+#     letter = 'X' # starting letter
+#     # interate while the game still has empty squares
+#     # (we don't have to worry about winner because we'll just return that)
+#     # which breaks the loop
+#     while game.empty_squares():
+#         # get the move from the appropriate player
+#         if letter == 'O':
+#             square = o_player.get_move(game)
+#         else:
+#             square = x_player.get_move(game)
 
-        # let's define a function to make a move!
-        if game.make_move(square, letter):
-            if print_game:
-                print(letter + f' makes a move to square {square}')
-                game.print_board()
-                print('') # just empty line
+#         # let's define a function to make a move!
+#         if game.make_move(square, letter):
+#             if print_game:
+#                 print(letter + f' makes a move to square {square}')
+#                 game.print_board()
+#                 print('') # just empty line
 
-            if game.current_winner:
-                if print_game:
-                    print(letter + ' wins!')
-                return letter
+#             if game.current_winner:
+#                 if print_game:
+#                     print(letter + ' wins!')
+#                 return letter
 
-            # affter we made our move, we need to alternate letters
-            letter = 'O' if letter == 'X' else 'X' # switches player
-            # if letter == 'X':
-            #     letter = 'O'
-            # else:
-            #     letter = 'X'
+#             # affter we made our move, we need to alternate letters
+#             letter = 'O' if letter == 'X' else 'X' # switches player
+#             # if letter == 'X':
+#             #     letter = 'O'
+#             # else:
+#             #     letter = 'X'
 
-        # tiny break to make things a little easier to read
-        # if print_game:
-            # time.sleep(0.8)
+#         # tiny break to make things a little easier to read
+#         # if print_game:
+#             # time.sleep(0.8)
 
-    if print_game:
-        print('It\'s a tie!')
+#     if print_game:
+#         print('It\'s a tie!')
 
-if __name__ == '__main__':
-    x_wins = 0
-    o_wins = 0
-    ties = 0
-    iterations = input('Input iterations:')
-    try:
-        iterations = int(iterations)
-    except ValueError:
-        iterations = 1000
+# if __name__ == '__main__':
+#     x_wins = 0
+#     o_wins = 0
+#     ties = 0
+#     iterations = input('Input iterations:')
+#     try:
+#         iterations = int(iterations)
+#     except ValueError:
+#         iterations = 1000
 
-    for match in range(iterations):
-        print(f'mactch {match} start ')
-        x_player = HumanPlayer('X')
-        o_player = GeniusComputerPlayer('O')
-        t = TicTacToe()
-        result = play(t, x_player, o_player, print_game=True)
-        if result == 'X':
-            x_wins += 1
-            print('==========> X win')
-        elif result == 'O':
-            o_wins += 1
-            print('==========> O win')
-        else:
-            ties += 1
-            print('==========> tie')
+#     for match in range(iterations):
+#         print(f'mactch {match} start ')
+#         x_player = HumanPlayer('X')
+#         o_player = GeniusComputerPlayer('O')
+#         t = TicTacToe()
+#         result = play(t, x_player, o_player, print_game=True)
+#         if result == 'X':
+#             x_wins += 1
+#             print('==========> X win')
+#         elif result == 'O':
+#             o_wins += 1
+#             print('==========> O win')
+#         else:
+#             ties += 1
+#             print('==========> tie')
             
     
-    print(f'After {iterations} iterations, we see {x_wins} X wins, {o_wins} O wins, ang {ties} ties')
+#     print(f'After {iterations} iterations, we see {x_wins} X wins, {o_wins} O wins, ang {ties} ties')
