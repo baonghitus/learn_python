@@ -4,12 +4,14 @@ from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ListProperty, ObjectProperty, StringProperty
 from kivy.core.window import Window
 from datetime import datetime, timedelta
-from kivy.uix.label import Label
 from game import TicTacToe
-from player import HumanPlayer, RandomComputerPlayer, GeniusComputerPlayer
+from player import HumanPlayer, GeniusComputerPlayer
 
+Window.size = (400, 300)
 class Board(Widget):
+    humanletter = "X"
     letter = "X"
+    typeplay = 1 # 1: player vs com, 2: player vs player
     game = TicTacToe()
     o_player = GeniusComputerPlayer('O')
 
@@ -58,8 +60,9 @@ class Board(Widget):
             self.parent.set_winner('ties!')
             return
 
-    def reset(self):
+    def newgame(self):
         self.game = TicTacToe()
+        self.letter = self.humanletter
         computer_letter = 'O' if self.letter == 'X' else 'X'
         self.o_player = GeniusComputerPlayer(computer_letter)
         # pass
@@ -75,6 +78,7 @@ class GameBoard(Widget):
         self.now = datetime.now()
         # Schedule the self.update_clock function to be called once a second
         Clock.schedule_interval(self.update_clock, 1.0)
+        self.mxboard.newgame()
 
     def update_clock(self, dt):
         # Called once a second using the kivy.clock module
@@ -88,7 +92,7 @@ class GameBoard(Widget):
             btn = self.ids[btnid]
             btn.text = ''
             btn.disabled = False
-        self.mxboard.reset()
+        self.mxboard.newgame()
 
     def set_winner(self, text):
         self.messresult = text
@@ -100,7 +104,6 @@ class GameBoard(Widget):
 
 class TictactoeApp(App):
     def build(self):
-        Window.size = (400, 300)
         board = GameBoard()
         board.build()
         return board

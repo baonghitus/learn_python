@@ -6,11 +6,39 @@
             size: self.size
 
 <GameBoard>
+    orientation: "vertical"
     mxboard: mxboard
     canvas:
         Rectangle:
             source: 'image/bg.jpeg'
             size: self.size
+
+    GridLayout:
+        size: self.size
+        cols:2
+        center: self.width , self.parent.height - self.height / 2
+
+        Label:
+            text: "Pepperoni"
+            font_size:20
+        CheckBox:
+            group: "pizza_toppings"
+            on_active: 
+
+        Label:
+            text: "Cheese"
+            font_size:20
+        CheckBox:
+            group: "pizza_toppings"
+            on_active: 
+            
+        Label:
+            text: "Mushroom"
+            font_size:20
+        CheckBox:
+            group: "pizza_toppings"
+            on_active: 
+
 
     Board:
         id: mxboard
